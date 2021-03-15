@@ -1,0 +1,15 @@
+* {
+    font-size: 14px;
+}
+
+nav {
+    background-color:  #b34848;
+}
+
+h2 {
+    color: #b34848;
+}
+
+h2:hover {
+    text-decoration: underline;
+}
