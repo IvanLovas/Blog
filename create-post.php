@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ?>
 
                     
-                        <option value="<?php echo ($author['id']) ?>"><?php echo ($author['ime'] . ' ' . $author['prezime'] ); ?></option>
+                        <option value="<?php echo ($author['pol']) ?>"><?php echo ($author['ime'] . ' ' . $author['prezime'] ); ?></option>
                     
                     
 
@@ -77,5 +77,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main><!-- /.container -->
 
 <?php include ('footer.php') ?>
+<script>
+
+    const select = document.querySelector('select');
+    select.addEventListener('change', (e) => {
+        if(e.target.value === 'M'){
+            e.target.style.color = "blue";
+        }else{
+            e.target.style.color = "pink";
+        }
+    })
+
+   
+</script>
 </body>
 </html>
