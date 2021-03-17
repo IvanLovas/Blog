@@ -46,8 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label>Title</label>
                 <input type="text" name="title" required>
 
-                <label>Content</label>
-                <textarea name="content" required></textarea>
+                <label>pol</label>
+                <input type="radio" name="pol" required>M</textarea>
+                <input type="radio" name="pol" required>Ž</textarea>
 
                 <label>Author</label>
                 <input type="text" name="author" required>

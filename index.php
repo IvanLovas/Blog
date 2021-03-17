@@ -1,7 +1,7 @@
 <?php include('db.php') ?>
 
 <?php 
-    $sql = "SELECT id, title, LEFT(body, 100) AS fmt_body, author, DATE_FORMAT(created_at, '%e %b %Y') AS fmt_created_at FROM posts ORDER BY created_at DESC";
+    $sql = "SELECT id, title, LEFT(body, 100) AS fmt_body, author_id, DATE_FORMAT(created_at, '%e %b %Y') AS fmt_created_at FROM posts ORDER BY created_at DESC";
     $posts = getDataFromDatabase($connection, $sql);
 ?>
 
