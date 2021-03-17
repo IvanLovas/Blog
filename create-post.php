@@ -2,12 +2,16 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
-    $content = $_POST['content'];
+    $content = $_POST['body'];
     $author = $_POST['author_id'];
-    $sql = "INSERT INTO posts (title, body, author_id, created_at) VALUES ('$title', '$content', '$author', now())";
+    $sql = "INSERT INTO posts (title, body, created_at, author_id) VALUES ('$title', '$content', now(), '$author')";
     insertIntoDB($connection, $sql);
-    header('location: index.php');
+    // header('location: index.php');
 }
+
+    $authorSql = "SELECT * FROM author";
+    $allAuthors = getAuthors($connection, $authorSql);
+    
 ?>
 
 
@@ -41,16 +45,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="col-sm-8 blog-main">
             <form class="create-new-post" method="POST" action="create-post.php">
-                <input type="text" name="post-title">
-                <textarea name="post-content" id="" cols="30" rows="10"></textarea>
+                <!-- <textarea name="post-content" id="" cols="30" rows="10"></textarea> -->
                 <label>Title</label>
-                <input type="text" name="title" required>
+                <input type="text" name="title"  required>
 
                 <label>Content</label>
-                <textarea name="content" required></textarea>
+                <textarea name="content" cols="30" rows="10" required></textarea>
 
-                <label>Author</label>
-                <input type="text" name="author" required>
+                <!-- <label>Author</label>
+                <input type="text" name="author" required> -->
+                <select name="author_id" id=“cars”>
+                <?php
+                    foreach ($allAuthors as $author) {
+                    ?>
+
+                    
+                        <option value="<?php echo ($author['id']) ?>"><?php echo ($author['ime'] . ' ' . $author['prezime'] ); ?></option>
+                    
+                    
+
+                        <?php
+                    }
+                    ?>
+              </select>
                 <button>Add post</button>
             </form>
         </div>

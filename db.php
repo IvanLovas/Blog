@@ -33,4 +33,12 @@
         $statement->execute();
         return;
     }
+
+    function getAuthors($connection, $sql) {
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement->fetchAll();
+    }
+    
 ?> 

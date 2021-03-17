@@ -38,7 +38,7 @@
             <div class="blog-post">
             <a href="single-post.php?post_id=<?php echo($post['id'])?>" class="blog-post-title"><?php echo ($post['title'])?></a>
             <p class="blog-post-meta"><?php echo($post['fmt_created_at']) ?><a href="#"> <?php echo($post['author']) ?></a></p>
-                <p> <?php echo($post['fmt_body']) ?>...</p>
+                <p> <?php echo($post['fmt_body']) ?> <?php echo($post['fmt_body']) ?></p>
             </div><!-- /.blog-post -->
 
             <?php } ?>

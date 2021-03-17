@@ -1,12 +1,12 @@
 <?php include('db.php')?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $author = $_POST['author_id'];
-    $sql = "INSERT INTO posts (title, body, author_id, created_at) VALUES ('$title', '$content', '$author', now())";
+    $ime = $_POST['ime'];
+    $prezime = $_POST['prezime'];
+    $pol = $_POST['pol'];
+    $sql = "INSERT INTO author (ime, prezime, pol) VALUES ('$ime', '$prezime', '$pol')";
     insertIntoDB($connection, $sql);
-    header('location: index.php');
+    // header('location: index.php');
 }
 ?>
 
@@ -40,19 +40,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="row">
 
         <div class="col-sm-8 blog-main">
-            <form class="create-new-post" method="POST" action="create-post.php">
-                <input type="text" name="post-title">
-                <textarea name="post-content" id="" cols="30" rows="10"></textarea>
-                <label>Title</label>
-                <input type="text" name="title" required>
-
+            <form class="create-new-author" method="POST" action="create-author.php">
+        
                 <label>pol</label>
                 <input type="radio" name="pol" required>M</textarea>
                 <input type="radio" name="pol" required>Ž</textarea>
 
-                <label>Author</label>
-                <input type="text" name="author" required>
-                <button>Add post</button>
+                <label>Ime</label>
+                <input type="text" name="ime" required>
+
+                <label>Prezime</label>
+                <input type="text" name="prezime" required>
+                <button>Add author</button>
             </form>
         </div>
         <?php include('sidebar.php') ?>
