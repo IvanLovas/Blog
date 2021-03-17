@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <!-- <label>Author</label>
                 <input type="text" name="author" required> -->
-                <select name="author_id" id=“cars”>
+                <select class="<?php if($author['pol'] === 'M') { echo 'is-male'; } else if(($author['pol'] === 'Z')) { echo 'is-female';} ?>">
                 <?php
                     foreach ($allAuthors as $author) {
                     ?>

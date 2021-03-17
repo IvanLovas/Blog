@@ -2,7 +2,7 @@
     <div class="col-sm-8 blog-main">
         <h5>Comments</h5>
         <?php
-            $commentsSql = "SELECT * FROM comments WHERE comments.post_id = {$_GET['post_id']}";
+            $commentsSql = "SELECT * FROM comments WHERE comments.posts_id = {$_GET['post_id']}";
             $comments = getDataFromDatabase($connection, $commentsSql);
         ?>
         <ul>

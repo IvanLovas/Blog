@@ -2,7 +2,7 @@
 <?php 
 
 if (isset($_GET['post_id'])) {
-    $sql = "SELECT * FROM posts WHERE posts.id = {$_GET['post_id']}";
+    $sql = "SELECT posts.id, posts.title, posts.body, posts.created_at, author.ime, author.prezime, author.pol FROM posts INNER JOIN author ON posts.author_id=author.id WHERE posts.id = {$_GET['post_id']}";
     $singlePost = getDataFromSinglePost($connection, $sql);
     }
 
@@ -37,9 +37,9 @@ if (isset($_GET['post_id'])) {
     <div class="row">
 
         <div class="col-sm-8 blog-main">
-            <div class="blog-post">
+            <div  class="blog-post">
                 <h2 class="blog-post-title"><?php echo($singlePost['title'])?></h2>
-                <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?><a href="#"><?php echo($singlePost['author']) ?></a></p>
+                <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?><a href="#"><?php echo($singlePost['ime'] . ' ' . $singlePost['prezime']) ?></a></p>
                 <p><?php echo($singlePost['body']) ?></p>
             </div><!-- /.blog-post -->
 

@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form class="create-new-author" method="POST" action="create-author.php">
         
                 <label>pol</label>
-                <input type="radio" name="pol" required>M</textarea>
-                <input type="radio" name="pol" required>Ž</textarea>
+                <input type="radio" value="M" name="pol" required>M</textarea>
+                <input type="radio" value="Z" name="pol" required>Ž</textarea>
 
                 <label>Ime</label>
                 <input type="text" name="ime" required>
