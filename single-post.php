@@ -1,11 +1,12 @@
-<?php include('db.php')?>
-<?php
-    if (isset($_GET['post_id'])) {
+<?php include('db.php') ?>
+<?php 
+
+if (isset($_GET['post_id'])) {
     $sql = "SELECT * FROM posts WHERE posts.id = {$_GET['post_id']}";
     $singlePost = getDataFromSinglePost($connection, $sql);
     }
-?>
 
+?>
 
 <!doctype html>
 <html lang="en">
@@ -28,23 +29,27 @@
 </head>
 
 <body>
+
 <?php include('header.php') ?>
 
 <main role="main" class="container">
+
     <div class="row">
+
         <div class="col-sm-8 blog-main">
             <div class="blog-post">
-                <h2 class="blog-post-title"><?php echo($singlePost['title']) ?></h2>
-                <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?> <a href="#"> <?php echo($singlePost['author']) ?></a></p>
+                <h2 class="blog-post-title"><?php echo($singlePost['title'])?></h2>
+                <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?><a href="#"><?php echo($singlePost['author']) ?></a></p>
+                <p><?php echo($singlePost['body']) ?></p>
+            </div><!-- /.blog-post -->
 
-                <p> <?php echo($singlePost['body']) ?></p>
-            </div>
         </div><!-- /.blog-main -->
         <?php include('sidebar.php') ?>
-        <!-- /.blog-sidebar -->
     </div><!-- /.row -->
+    <?php include('comments.php')?>
+
 </main><!-- /.container -->
 
-<?php include('footer.php') ?>
+<?php include ('footer.php') ?>
 </body>
 </html>

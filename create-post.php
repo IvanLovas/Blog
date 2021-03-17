@@ -1,3 +1,16 @@
+<?php include('db.php')?>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $author = $_POST['author'];
+    $sql = "INSERT INTO posts (title, body, author, created_at) VALUES ('$title', '$content', '$author', now())";
+    insertIntoDB($connection, $sql);
+    header('location: index.php');
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,19 +36,29 @@
 <?php include('header.php') ?>
 
 <main role="main" class="container">
+
     <div class="row">
+
         <div class="col-sm-8 blog-main">
-        <form action="">
-            <input type="text" name="post-title" >
-            <textarea name="post-content" id="" cols="30" rows="10"></textarea>
-            <button>Add post</button>
-        </form>
-        </div><!-- /.blog-main -->
+            <form class="create-new-post" method="POST" action="create-post.php">
+                <input type="text" name="post-title">
+                <textarea name="post-content" id="" cols="30" rows="10"></textarea>
+                <label>Title</label>
+                <input type="text" name="title" required>
+
+                <label>Content</label>
+                <textarea name="content" required></textarea>
+
+                <label>Author</label>
+                <input type="text" name="author" required>
+                <button>Add post</button>
+            </form>
+        </div>
         <?php include('sidebar.php') ?>
-        <!-- /.blog-sidebar -->
     </div><!-- /.row -->
+
 </main><!-- /.container -->
 
-<?php include('footer.php') ?>
+<?php include ('footer.php') ?>
 </body>
 </html>

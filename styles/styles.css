@@ -1,15 +1,26 @@
-* {
+html,
+body {
     font-size: 14px;
 }
 
-nav {
-    background-color:  #b34848;
+.blog-masthead {
+    background-color: #b34848;
 }
 
-h2 {
+.blog-post-title,
+.blog-title,
+h1, h2, h3, h4, h5, h6 {
     color: #b34848;
 }
 
-h2:hover {
-    text-decoration: underline;
+.blog-post-title:hover {
+    color: #b34848;
+} 
+
+.create-new-post label {
+    display: block;
 }
+
+.create-new-post input {
+    display: block;
+} 
