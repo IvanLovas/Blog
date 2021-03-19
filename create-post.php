@@ -50,17 +50,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" name="title"  required>
 
                 <label>Content</label>
-                <textarea name="content" cols="30" rows="10" required></textarea>
+                <textarea name="body" cols="30" rows="10" required></textarea>
 
                 <!-- <label>Author</label>
                 <input type="text" name="author" required> -->
-                <select class="<?php if($author['pol'] === 'M') { echo 'is-male'; } else if(($author['pol'] === 'Z')) { echo 'is-female';} ?>">
+                <select name="author_id" class="<?php if($author['pol'] === 'M') { echo 'is-male'; } else if(($author['pol'] === 'Z')) { echo 'is-female';} ?>">
                 <?php
                     foreach ($allAuthors as $author) {
                     ?>
 
                     
-                        <option value="<?php echo ($author['pol']) ?>"><?php echo ($author['ime'] . ' ' . $author['prezime'] ); ?></option>
+                        <option value="<?php echo ($author['id']) ?>"><?php echo ($author['ime'] . ' ' . $author['prezime'] ); ?></option>
                     
                     
 
@@ -80,13 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script>
 
     const select = document.querySelector('select');
-    select.addEventListener('change', (e) => {
-        if(e.target.value === 'M'){
-            e.target.style.color = "blue";
-        }else{
-            e.target.style.color = "pink";
-        }
-    })
+    // select.addEventListener('change', (e) => {
+    //     if(e.target.value === 'M'){
+    //         e.target.style.color = "blue";
+    //     }else{
+    //         e.target.style.color = "pink";
+    //     }
+    // })
 
    
 </script>
