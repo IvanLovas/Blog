@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pol = $_POST['pol'];
     $sql = "INSERT INTO author (ime, prezime, pol) VALUES ('$ime', '$prezime', '$pol')";
     insertIntoDB($connection, $sql);
-    // header('location: index.php');
 }
 ?>
 

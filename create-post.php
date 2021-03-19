@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $author = $_POST['author_id'];
     $sql = "INSERT INTO posts (title, body, created_at, author_id) VALUES ('$title', '$content', now(), '$author')";
     insertIntoDB($connection, $sql);
-    // header('location: index.php');
 }
 
     $authorSql = "SELECT * FROM author";
@@ -45,29 +44,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="col-sm-8 blog-main">
             <form class="create-new-post" method="POST" action="create-post.php">
-                <!-- <textarea name="post-content" id="" cols="30" rows="10"></textarea> -->
+
                 <label>Title</label>
                 <input type="text" name="title"  required>
 
                 <label>Content</label>
                 <textarea name="body" cols="30" rows="10" required></textarea>
 
-                <!-- <label>Author</label>
-                <input type="text" name="author" required> -->
                 <select name="author_id" class="<?php if($author['pol'] === 'M') { echo 'is-male'; } else if(($author['pol'] === 'Z')) { echo 'is-female';} ?>">
-                <?php
-                    foreach ($allAuthors as $author) {
+                    <?php
+                        foreach ($allAuthors as $author) {
                     ?>
-
-                    
-                        <option value="<?php echo ($author['id']) ?>"><?php echo ($author['ime'] . ' ' . $author['prezime'] ); ?></option>
-                    
-                    
-
-                        <?php
-                    }
+                        <option class="<?php echo ($author['pol']) ?>" value="<?php echo ($author['id']) ?>"><?php echo ($author['ime'] . ' ' . $author['prezime'] ); ?></option>
+                    <?php
+                        }
                     ?>
-              </select>
+                </select>
                 <button>Add post</button>
             </form>
         </div>
@@ -79,14 +71,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include ('footer.php') ?>
 <script>
 
-    const select = document.querySelector('select');
-    // select.addEventListener('change', (e) => {
-    //     if(e.target.value === 'M'){
-    //         e.target.style.color = "blue";
-    //     }else{
-    //         e.target.style.color = "pink";
-    //     }
-    // })
+const select = document.querySelector("select");
+select.addEventListener("change", () => {
+  if (select.querySelector(`option[value="${select.value}"]`).className === 'M') {
+    select.style.color = "blue";
+  } else {
+    select.style.color = "pink";
+  }
+});
 
    
 </script>
