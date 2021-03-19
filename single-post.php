@@ -2,7 +2,7 @@
 <?php 
 
 if (isset($_GET['post_id'])) {
-    $sql = "SELECT posts.id, posts.title, posts.body, posts.created_at, author.ime, author.prezime, author.pol FROM posts INNER JOIN author ON posts.author_id=author.id WHERE posts.id = {$_GET['post_id']}";
+    $sql = "SELECT * FROM posts WHERE posts.id = {$_GET['post_id']}";
     $singlePost = getDataFromSinglePost($connection, $sql);
     }
 
